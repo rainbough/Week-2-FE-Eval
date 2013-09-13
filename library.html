@@ -25,6 +25,7 @@
     .button{
       width: 200px;
       height: 30px;
+      text-transform: capitalize;
     }
 
   </style>
@@ -77,16 +78,30 @@ Author: <input id="author" />
   }
   ];
   
-var renderLibrary = function () {
+var renderLibrary = function (array) {
   var libraryTemplateHtml = $('#templates .library').html();
   var libraryTemplate = _.template(libraryTemplateHtml);
   
-  for (var i = 0; i < book.length; i += 1) {
-    var newbookhtml = libraryTemplate(book[i]);
+  for (var i = 0; i < array.length; i += 1) {
+    var newbookhtml = libraryTemplate(array[i]);
     $('#library').append(newbookhtml);
   };
 };
-renderLibrary();
+renderLibrary(book);
+var Book = function(title, author){
+    this.title = title;
+    this.author = author;
+    this.status= 'available';
+}
+$('.button').on('click', function(){
+  var title = $('#title').val();
+  var author = $('#author').val();
+  var new_book = new Book(title, author);
+  var book2 = [];
+  book2.push(new_book);
+  renderLibrary(book2);
+});
+
 
 </script>
 
