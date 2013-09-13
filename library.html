@@ -5,16 +5,17 @@
   <style type="text/css">
     /*#templates { display: none; }*/
     small { position: fixed; bottom: 4px; right: 4px; }
-    #library .book {
+    #library {
       background: #ccc;
       width: 200px;
       float: left;
       padding: 1px 20px;
+      border: 2px solid #000;
     }
-    #library .book h3 {
+    #library h3 {
       font-style: italic;
     }
-    #library .book h5 {
+    #library h5 {
       font-weight: normal;
       text-transform: uppercase;
     }
@@ -36,8 +37,8 @@
 <script class = "library" type="text/template">
       
   <div class="library">
-    <h3> Title: <%= title %></h3>
-    <h5> Author: <%= author %></h5>
+    <h3> <%= title %></h3>
+    <h5> <%= author %></h5>
     <p> Status: <%= status %></p>
   </div>
 </script>
@@ -62,25 +63,22 @@
   },
   {
     title: 'Starship Troopers',
-    author: 'Robert Heinlein',
+    author: 'Robert A. Heinlein',
     status: 'available'
   },
   {
     title: 'Do Androids Dream of Electric Sheep?',
-    author: 'Philip Dick',
+    author: 'Philip K. Dick',
     status: 'available'
   }
   ];
 
-    var libraryTemplateHtml = $('#templates .library').html();
-    var libraryTemplate = _.template(libraryTemplateHtml);
-
-   
-   for (var i = 0; i < book.length; i += 1) {
-  
+  var libraryTemplateHtml = $('#templates .library').html();
+  var libraryTemplate = _.template(libraryTemplateHtml);
+  for (var i = 0; i < book.length; i += 1) {
     var newbookhtml = libraryTemplate(book[i]);
     $('#library').append(newbookhtml);
-    };
+  };
 
 </script>
 
