@@ -48,7 +48,7 @@ Author: <input id="author" />
 <button type="button" class="button">Add New book</button></h4>
 
 <div id="templates">
-<script class = "library" type="text/template">
+<script class="library" type="text/template">
       
   <div class="library">
     <h3> <%= title %></h3>
@@ -64,52 +64,50 @@ Author: <input id="author" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <script type="text/javascript">
-  // TODO
-   var book = [
-  {
-    title: 'I, Robot',
-    author: 'Issac Asimov',
-    status: 'available'
-  },
-  {
-    title: 'The Moon is a Harsh Mistress',
-    author: 'Robert Heinlein',
-    status: 'available'
-  },
-  {
-    title: 'Starship Troopers',
-    author: 'Robert A. Heinlein',
-    status: 'available'
-  },
-  {
-    title: 'Do Androids Dream of Electric Sheep?',
-    author: 'Philip K. Dick',
-    status: 'available'
-  }
+  var libraryTemplateHtml = $('#templates .library').html();
+  var libraryTemplate = _.template(libraryTemplateHtml);
+
+  var books = [
+    {
+      title: 'I, Robot',
+      author: 'Issac Asimov',
+      status: 'available'
+    },
+    {
+      title: 'The Moon is a Harsh Mistress',
+      author: 'Robert Heinlein',
+      status: 'available'
+    },
+    {
+      title: 'Starship Troopers',
+      author: 'Robert A. Heinlein',
+      status: 'available'
+    },
+    {
+      title: 'Do Androids Dream of Electric Sheep?',
+      author: 'Philip K. Dick',
+      status: 'available'
+    }
   ];
   
 var renderLibrary = function (array) {
-  var libraryTemplateHtml = $('#templates .library').html();
-  var libraryTemplate = _.template(libraryTemplateHtml);
-  
   for (var i = 0; i < array.length; i += 1) {
-    var newbookhtml = libraryTemplate(array[i]);
-    $('#library').append(newbookhtml);
-  };
+    var newBookHtml = libraryTemplate(array[i]);
+    $('#library').append(newBookHtml);
+  }
 };
-renderLibrary(book);
-var Book = function(title, author){
-    this.title = title;
-    this.author = author;
-    this.status= 'available';
-}
-$('.button').on('click', function(){
-  var title = $('#title').val();
-  var author = $('#author').val();
-  var new_book = new Book(title, author);
-  var book2 = [];
-  book2.push(new_book);
-  renderLibrary(book2);
+renderLibrary(books);
+
+$('.button').on('click', function () {
+  var newTitle = $('#title').val();
+  var newAuthor = $('#author').val();
+  var newBook = {
+    title: newTitle,
+    author: newAuthor,
+    status: 'available'
+  };
+  var newBookHtml = libraryTemplate(newBook);
+  $('#library').append(newBookHtml);
 });
 
 
