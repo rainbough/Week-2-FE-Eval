@@ -45,6 +45,9 @@
 </div>
 
 <div id="library"></div>
+<input id="title">Title:</input>
+<input id="author">Author:</input>
+<input type="button">Add New book</input>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
@@ -72,13 +75,17 @@
     status: 'available'
   }
   ];
-
+  
+var renderLibrary = function () {
   var libraryTemplateHtml = $('#templates .library').html();
   var libraryTemplate = _.template(libraryTemplateHtml);
+  
   for (var i = 0; i < book.length; i += 1) {
     var newbookhtml = libraryTemplate(book[i]);
     $('#library').append(newbookhtml);
   };
+};
+renderLibrary();
 
 </script>
 
