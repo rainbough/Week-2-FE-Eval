@@ -15,6 +15,7 @@
     }
     #library .book h5 {
       font-weight: normal;
+      text-transform: uppercase;
     }
   </style>
 </head>
@@ -23,7 +24,14 @@
 <h1>THE LIBRARY</h1>
 
 
-<div id="library"></div>
+<div id="library">
+  <div class="book">
+    <h3>I, Robot</h3>
+    <h5>Issac Asimov</h5>
+    <p>Status: available</p>
+  </div>
+  
+</div>
 
 <div id="templates">
 
@@ -31,8 +39,13 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-<script type="text/javascript">
+<script id="templates" type="text/javascript">
   // TODO
+  var book = {
+    title: 'I, Robot'
+    author: 'Issac Asimov'
+    status: 'available'
+  }
 </script>
 
 <small>It's back.</small>
