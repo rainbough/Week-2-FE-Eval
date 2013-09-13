@@ -6,12 +6,22 @@
   <style type="text/css">
     /*#templates { display: none; }*/
     small { position: fixed; bottom: 4px; right: 4px; }
+    body{
+      background: #613721;
+    }
+    h1{
+      color: #FAF2C5;
+     text-shadow: 1px 1px 1px #000, 3px 3px 5px #000; 
+
+    }
     #library {
-      background: #ccc;
+      background: #FAF2C5;
       
       float: left;
       padding: 1px 20px;
-      border: 2px solid #000;
+      border-radius: 5px;
+      margin-right: 10px;
+     
     }
 
     #library h3 {
@@ -30,12 +40,22 @@
     }
     #library div{
       background-color: #FFEBBF;
-      border: 2px solid #000;
+      border: 2px solid #664224;
       margin: 5px;
       text-align: center;
       box-shadow: 1px 1px 2px #000;
-      float: left;
+      display: inline-block;
       width: 250px;
+      border-radius: 5px;
+      background: #efc994; /* Old browsers */
+      background: -moz-linear-gradient(45deg,  #efc994 0%, #ffffcc 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#efc994), color-stop(100%,#ffffcc)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* IE10+ */
+      background: linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc994', endColorstr='#ffffcc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
     }
 
   </style>
