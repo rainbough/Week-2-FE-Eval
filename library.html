@@ -1,8 +1,9 @@
+
 <html>
 <head>
   <title>Week 2 Frontend Project</title>
   <style type="text/css">
-    #templates { display: none; }
+    /*#templates { display: none; }*/
     small { position: fixed; bottom: 4px; right: 4px; }
     #library .book {
       background: #ccc;
@@ -22,33 +23,69 @@
 <body>
 
 <h1>THE LIBRARY</h1>
-
-
-<div id="library">
-  <div class="book">
+<!-- <div id="templates">
+ 
+ <div class="library">
     <h3>I, Robot</h3>
     <h5>Issac Asimov</h5>
     <p>Status: available</p>
   </div>
-  
-</div>
+  </div> -->
 
 <div id="templates">
-
+<script class = "library" type="text/template">
+      
+  <div class="library">
+    <h3> Title: <%= title %></h3>
+    <h5> Author: <%= author %></h5>
+    <p> Status: <%= status %></p>
+  </div>
+</script>
 </div>
+
+<div id="library"></div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-<script id="templates" type="text/javascript">
+<script type="text/javascript">
   // TODO
-  var book = {
-    title: 'I, Robot'
-    author: 'Issac Asimov'
+   var book = [
+  {
+    title: 'I, Robot',
+    author: 'Issac Asimov',
+    status: 'available'
+  },
+  {
+    title: 'The Moon is a Harsh Mistress',
+    author: 'Robert Heinlein',
+    status: 'available'
+  },
+  {
+    title: 'Starship Troopers',
+    author: 'Robert Heinlein',
+    status: 'available'
+  },
+  {
+    title: 'Do Androids Dream of Electric Sheep?',
+    author: 'Philip Dick',
     status: 'available'
   }
+  ];
+
+    var libraryTemplateHtml = $('#templates .library').html();
+    var libraryTemplate = _.template(libraryTemplateHtml);
+
+   
+   for (var i = 0; i < book.length; i += 1) {
+  
+    var newbookhtml = libraryTemplate(book[i]);
+    $('#library').append(newbookhtml);
+    };
+
 </script>
 
-<small>It's back.</small>
+
+<small>"It's back."</small>
 
 </body>
 </html>
