@@ -31,41 +31,72 @@ Author: <input id="author" />
   var libraryTemplateHtml = $('#templates .library').html();
   var libraryTemplate = _.template(libraryTemplateHtml);
 
-  var books = [
-    {
-      title: 'I, Robot',
-      author: 'Issac Asimov',
-      status: 'available'
-    },
-    {
-      title: 'The Moon is a Harsh Mistress',
-      author: 'Robert Heinlein',
-      status: 'available'
-    },
-    {
-      title: 'Starship Troopers',
-      author: 'Robert A. Heinlein',
-      status: 'available'
-    },
-    {
-      title: 'Do Androids Dream of Electric Sheep?',
-      author: 'Philip K. Dick',
-      status: 'available'
-    },
-    {
-      title: "Diamond Age",
-      author: "Neal Stephenson",
-      status: 'available'
+ // {
+ //      title: 'I, Robot',
+ //      author: 'Issac Asimov',
+ //      status: 'available'
+ //    },
+ //    {
+ //      title: 'The Moon is a Harsh Mistress',
+ //      author: 'Robert Heinlein',
+ //      status: 'available'
+ //    },
+ //    {
+ //      title: 'Starship Troopers',
+ //      author: 'Robert A. Heinlein',
+ //      status: 'available'
+ //    },
+ //    {
+ //      title: 'Do Androids Dream of Electric Sheep?',
+ //      author: 'Philip K. Dick',
+ //      status: 'available'
+ //    },
+ //    {
+ //      title: "Diamond Age",
+ //      author: "Neal Stephenson",
+ //      status: 'available'
+ //    }  
+
+
+
+var Library = function(){
+  this.books = [];
+  var array = this.books;
+  var pushbooks = function (newbook){
+    array.push(newbook);
+  };
+  this.addBook = function(newbook){
+      newbook = {
+        title: newbook.title,
+        author: newbook.author,
+        status: "available",
+      };
+      pushbooks(newbook);
+  };
+  this.getBook = function(title){
+    for(var i = 0; i < array.length; i += 1){
+      if (title === array[i].title){
+        return array.status;
+      }
+      else {
+        return "This book is not available";
+      }
     }
-  ];
-  
-var renderLibrary = function (array) {
-  for (var i = 0; i < array.length; i += 1) {
-    var newBookHtml = libraryTemplate(array[i]);
+  };
+  this.render = function (newbook) {
+  for (var i = 0; i < this.books.length; i += 1) {
+    var newBookHtml = libraryTemplate(this.books[i]);
     $('#library').append(newBookHtml);
-  }
+    }
+  };
 };
-renderLibrary(books);
+// var renderLibrary = function (array) {
+//   for (var i = 0; i < array.length; i += 1) {
+//     var newBookHtml = libraryTemplate(array[i]);
+//     $('#library').append(newBookHtml);
+//   }
+// };
+//renderLibrary(books);
 
 $('.button').on('click', function () {
   var newTitle = $('#title').val();
@@ -78,6 +109,30 @@ $('.button').on('click', function () {
   var newBookHtml = libraryTemplate(newBook);
   $('#library').append(newBookHtml);
 });
+var lib = new Library();
+console.log('New library:', lib);
+
+lib.addBook({
+  title: 'Test Title 1',
+  author: 'Author 1'
+});
+console.log('# of books should be 1:', lib.books.length);
+
+lib.addBook({
+  title: 'Test Title 2',
+  author: 'Author 2'
+});
+console.log('# of books should be 2:', lib.books.length);
+
+
+// var book = lib.getBook('Test Title 1');
+// console.log('The book should exist:', book);
+// console.log('Book status should be available:', book.status);
+
+// This should render all the library's books to the web page
+lib.render();
+
+
 
 
 </script>
