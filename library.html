@@ -65,25 +65,30 @@ var Library = function(){
   var pushbooks = function (newbook){
     array.push(newbook);
   };
-  this.addBook = function(newbook){
+  this.addBook = function(newBook){
       newbook = {
-        title: newbook.title,
-        author: newbook.author,
-        status: "available",
+        title: newBook.title,
+        author: newBook.author,
+        status: 'available'
       };
       pushbooks(newbook);
+      var title = newBook.title;
+      
   };
-  this.getBook = function(title){
-    for(var i = 0; i < array.length; i += 1){
-      if (title === array[i].title){
-        return array.status;
+
+
+  this.getBook = function(bookName){
+    for(var i = 0; i < this.books.length; i += 1){
+      if (bookName === this.books[i].title){
+        var bookStatus = this.books.status;
+        return bookStatus;
       }
       else {
         return "This book is not available";
       }
     }
   };
-  this.render = function (newbook) {
+  this.render = function () {
   for (var i = 0; i < this.books.length; i += 1) {
     var newBookHtml = libraryTemplate(this.books[i]);
     $('#library').append(newBookHtml);
@@ -99,6 +104,7 @@ var Library = function(){
 //renderLibrary(books);
 
 $('.button').on('click', function () {
+
   var newTitle = $('#title').val();
   var newAuthor = $('#author').val();
   var newBook = {
@@ -106,8 +112,11 @@ $('.button').on('click', function () {
     author: newAuthor,
     status: 'available'
   };
-  var newBookHtml = libraryTemplate(newBook);
-  $('#library').append(newBookHtml);
+  var newLib = new Library();
+  newLib.addBook(newBook);
+  newLib.render();
+  // var newBookHtml = libraryTemplate(newBook);
+  // $('#library').append(newBookHtml);
 });
 var lib = new Library();
 console.log('New library:', lib);
@@ -123,11 +132,11 @@ lib.addBook({
   author: 'Author 2'
 });
 console.log('# of books should be 2:', lib.books.length);
+var book = lib.getBook('Test Title 1');
+//console.log('The book should exist:', book);
+//console.log('Book status should be available:', book.status);
 
 
-// var book = lib.getBook('Test Title 1');
-// console.log('The book should exist:', book);
-// console.log('Book status should be available:', book.status);
 
 // This should render all the library's books to the web page
 lib.render();
