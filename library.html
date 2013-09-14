@@ -75,7 +75,9 @@ var Library = function(){
       var title = newBook.title;
       
   };
+  this.checkOut = function(bookTitle){
 
+  }
 
   this.getBook = function(bookName){
     for(var i = 0; i < this.books.length; i += 1){
@@ -136,10 +138,13 @@ var book = lib.getBook('Test Title 1');
 //console.log('The book should exist:', book);
 //console.log('Book status should be available:', book.status);
 
-
-
 // This should render all the library's books to the web page
 lib.render();
+$('#library').on('click', function(){
+  var bookTitle = $(this).text();
+  confirm("Do you want to check out " + bookTitle  + "?" );
+  newLib.checkOut(bookTitle);
+});
 
 
 
