@@ -142,7 +142,7 @@ var book = lib.getBook('Test Title 1');
 lib.render();
 $('#library').on('click', function(){
   var bookTitle = $(this).text();
-  confirm("Do you want to check out " + bookTitle  + "?" );
+  
   newLib.checkOut(bookTitle);
 });
 
