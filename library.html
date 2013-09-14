@@ -1,83 +1,20 @@
 
 <html>
 <head>
-  <title>Week 2 Frontend Project</title>
-
-  <style type="text/css">
-    /*#templates { display: none; }*/
-    small { position: fixed; bottom: 4px; right: 4px; }
-    body{
-      background-image: url(stars.jpg);
-      width: 100%;
-    }
-    
-    h1{
-      color: #000;
-      text-shadow: 1px 1px 1px #fff, -3px -3px 5px #fff; 
-      text-align: center;
-      text-transform: uppercase;
-    }
-    
-    #library {
-      padding: 1px 20px;
-      border-radius: 5px;
-      margin-right: auto;
-      margin-left: auto;
-      display: block;
-      width: 90%;
-     }
-
-    #library h3 {
-      font-style: italic;
-    }
-    
-    #library h5 {
-      font-weight: normal;
-      text-transform: uppercase;
-    }
-    
-    input{
-    }
-    
-    .button{
-      width: 200px;
-      height: 30px;
-      text-transform: capitalize;
-    }
-    
-    #library div{
-      background-color: #FFEBBF;
-      border: 2px solid #000;
-      margin: 10px 5px 0 5px;
-      text-align: center;
-      box-shadow: 1px 1px 2px #fff;
-      display: inline-block;
-      width: 250px;
-      border-radius: 10%;
-      /*generated css gradient*/
-      background: #efc994; /* Old browsers */
-      background: -moz-linear-gradient(45deg,  #efc994 0%, #ffffcc 100%); /* FF3.6+ */
-      background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#efc994), color-stop(100%,#ffffcc)); /* Chrome,Safari4+ */
-      background: -webkit-linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* Chrome10+,Safari5.1+ */
-      background: -o-linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* Opera 11.10+ */
-      background: -ms-linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* IE10+ */
-      background: linear-gradient(45deg,  #efc994 0%,#ffffcc 100%); /* W3C */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc994', endColorstr='#ffffcc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-      }
-
-  </style>
+  <link rel="stylesheet" href="style.css"/>
+  <title>Week 2 Frontend Project: SciFi Library!</title>
 </head>
 <body>
 
 <h1>the scifi library</h1>
-<h4>Title:<input id="title" />
+<div class="inputstuff">
+<h4>Title:<input id="title"/>
 Author: <input id="author" />
 <button type="button" class="button">Add New book</button></h4>
-
+</input>
 <div id="templates">
 <script class="library" type="text/template">
-      
-  <div class="library">
+<div class="library">
     <h3> <%= title %></h3>
     <h5> <%= author %></h5>
     <p> Status: <%= status %></p>
@@ -113,6 +50,11 @@ Author: <input id="author" />
     {
       title: 'Do Androids Dream of Electric Sheep?',
       author: 'Philip K. Dick',
+      status: 'available'
+    },
+    {
+      title: "Diamond Age",
+      author: "Neal Stephenson",
       status: 'available'
     }
   ];
